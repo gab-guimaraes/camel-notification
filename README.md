@@ -52,3 +52,30 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 You can then execute your native executable with: `./target/CamelNotificationAI-1.0.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
+
+
+### Kafka commands 
+
+## Run Zookeeper:
+
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+## Run Kafka:
+
+bin/kafka-server-start.sh config/server.properties
+
+#### List all topics:
+
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+#### Create topic:
+
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 3 --partitions 3 --topic EVENT-TO-ETL
+
+#### Delete topic:
+
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic first_topic
+
+#### Produce
+
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic FILMES
